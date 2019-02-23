@@ -1,0 +1,4 @@
+2019/02/15 13:22:56 [emerg] 1#1: no port in upstream "php-upstream" in /etc/nginx/conf.d/site.conf:47
+2019/02/21 10:49:52 [emerg] 1#1: no port in upstream "php-upstream" in /etc/nginx/conf.d/site.conf:47
+2019/02/21 10:55:40 [emerg] 1#1: no port in upstream "php-upstream" in /etc/nginx/conf.d/site.conf:47
+2019/02/21 11:00:24 [emerg] 1#1: no port in upstream "php-upstream" in /etc/nginx/conf.d/site.conf:47
