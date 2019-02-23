@@ -31,8 +31,6 @@ RUN apt-get install -y ap-utils curl git nano zlib1g-dev nodejs \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR "/var/www/html/public"
-
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
@@ -61,6 +59,5 @@ RUN echo "xdebug.default_enable = off" >> ${XDEBUG_INI} \
 # RUN ln -s /var/www/html/artisan /usr/local/bin/ \
 #     && ln -s /vendor/bin/phpunit /usr/local/bin/
 
-# EXpose port 9000 and start php-fpm server
-EXPOSE 9000
+# Start php-fpm server
 CMD ["php-fpm"]
