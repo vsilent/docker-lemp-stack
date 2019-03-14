@@ -45,19 +45,20 @@ RUN echo "xdebug.default_enable = off" >> ${XDEBUG_INI} \
     && echo "xdebug.remote_log = /var/www/docker/php/xdebug.log" >> ${XDEBUG_INI}
 
 # Install composer
-# ENV COMPOSER_ALLOW_SUPERUSER=1
-# RUN curl -sS https://getcomposer.org/installer | php && \
-#     mv composer.phar /usr/local/bin/composer && \
-#     printf "\nPATH=\"~/.composer/vendor/bin:\$PATH\"\n" | tee -a ~/.bashrc
+ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN curl -sS https://getcomposer.org/installer | php \
+  && mv composer.phar /usr/local/bin/ \
+  && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+
+ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
 
 # Composer plugins
-# RUN composer global require "hirak/prestissimo"
-# RUN composer global require "laravel/envoy"
-# RUN composer global require "laravel/installer"
+RUN composer global require "hirak/prestissimo"
+RUN composer global require "laravel/envoy"
+RUN composer global require "laravel/installer"
 
 # Install Laravel
-# RUN ln -s /var/www/html/artisan /usr/local/bin/ \
-#     && ln -s /vendor/bin/phpunit /usr/local/bin/
+#RUN laravel new laravel
 
 # Start php-fpm server
 CMD ["php-fpm"]
