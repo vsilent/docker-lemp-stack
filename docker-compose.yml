@@ -11,9 +11,6 @@ services:
       - ${APP_PATH}:${DOCUMENT_ROOT}
       - ./infrastructure/server/nginx/sites-enabled/mylara.conf:/etc/nginx/conf.d/default.conf
       - ./infrastructure/server/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./infrastructure/server/nginx/sites-enabled:/etc/nginx/sites-enabled
-      - ./infrastructure/logs/nginx-error.log:/var/log/nginx/error.log
-      - ./infrastructure/logs/nginx-access.log:/var/log/nginx/access.log
     container_name: LEMP_nginx
     restart: always
     links:
